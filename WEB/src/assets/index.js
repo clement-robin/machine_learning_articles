@@ -1,5 +1,5 @@
 // @ts-nocheck
-import logo from "./uqac.png";
+import logo from "./logo.svg";
 
 export {
     logo,

@@ -1,27 +1,22 @@
-import React from 'react';
-import { useState } from 'react'
+import React, { useState } from 'react';
+import Search from './Search';
+import Results from './Results';
 
 function Home() {
-    const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('');
+  const [showResults, setShowResults] = useState(false);
 
-    const handleSearch = () => {
-        console.log("ouioui");
-    };
+  const handleSearch = () => {
+    console.log("ouioui");
+    setShowResults(true);
+  };
 
-    return (
-        <div className="p-10">
-            <input
-                className="p-2 border rounded"
-                type="text"
-                placeholder="Enter article title..."
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-            />
-            <button className="p-2 ml-4 bg-blue-500 text-white rounded" onClick={handleSearch}>
-                Search
-            </button>
-        </div>
-    );
+  return (
+    <div>
+      <Search title={title} setTitle={setTitle} handleSearch={handleSearch} />
+      {showResults && <Results />}
+    </div>
+  );
 }
 
 export default Home;

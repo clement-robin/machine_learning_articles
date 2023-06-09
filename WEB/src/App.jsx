@@ -9,7 +9,10 @@ function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        <div className="relative z-0 bg-primary">
+          <Navbar />
+        </div>
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutWrapper />} />
