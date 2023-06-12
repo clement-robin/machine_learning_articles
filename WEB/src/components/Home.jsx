@@ -14,7 +14,7 @@ function Home() {
   return (
     <div>
       <Search title={title} setTitle={setTitle} handleSearch={handleSearch} />
-      {showResults && <Results />}
+      {showResults && <Results title={title} />}
     </div>
   );
 }

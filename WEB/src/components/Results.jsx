@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Results() {
+function Results({ title }) {
+  const [data, setData] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/recherche/" + title);
+        const responseData = await response.text();
+        setData(responseData);
+        setLoading(false);
+        console.log(responseData);
+      } catch (error) {
+        console.error('Erreur lors de la prédiction du modèle', error);
+      }
+    };
+
+    fetchData();
+  }, [title]);
+
   return (
-    <p className=''>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-      sapiente suscipit consequatur vero voluptas deleniti earum, modi
-      saepe. Autem voluptate molestiae corrupti reiciendis, consequatur
-      dolor eos voluptas officia labore quos.
-    </p>
+    <div className="ml-auto p10">
+      {loading ? (
+        <p className="">Chargement...</p>
+      ) : (
+        <p className="">La prédiction nous dit que {title} est {data}</p>
+      )}
+    </div>
   );
 }
 
