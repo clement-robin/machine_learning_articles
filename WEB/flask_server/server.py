@@ -16,6 +16,7 @@ def statut():
 
 @app.route("/resultats")
 def resultats():
+    sleep(2)
     if mod.prediction_modele("aaa"):
         return {"resultats": ["res1","res2","res3"]}
     else:
