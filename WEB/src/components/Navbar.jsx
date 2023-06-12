@@ -20,6 +20,9 @@ const Navbar = () => {
         <img src={logo}  alt="logo" className="w-9 h-9 object-contain"/>
         <ul className="list-none hidden sm:flex flex-row gap-10">
             <li>
+                <Link to="/testpython">Test Python</Link>
+            </li>
+            <li>
                 <Link to="/about">About</Link>
             </li>
             <li>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutWrapper from './components/About';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import TestPythonWrapper2 from './components/TestEzPython';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutWrapper />} />
+          <Route path="/testpython" element={<TestPythonWrapper2 />} />
           {/* Autres routes */}
         </Routes>
       </div>
