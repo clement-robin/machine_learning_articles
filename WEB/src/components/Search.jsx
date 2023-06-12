@@ -2,7 +2,7 @@ import React from 'react';
 
 function Search({ title, setTitle, handleSearch }) {
   return (
-    <div className="min-h-screen flex items-center ml-auto">
+    <div className="min-h-screen flex items-center ml-[40%]">
       <div>
         <input
           className="p-2 border rounded"

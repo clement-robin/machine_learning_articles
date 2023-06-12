@@ -18,7 +18,7 @@ function Results({ title }) {
     };
 
     fetchData();
-  }, [title]);
+  }, []);
 
   return (
     <div className="ml-auto p10">
