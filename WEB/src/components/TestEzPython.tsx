@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 function TestPython() {
-  const [data, setData] = useState([{}])
+  const [data, setData] = useState({})
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -13,7 +13,6 @@ function TestPython() {
         const response = await fetch('http://localhost:5000/resultats');
         const responseData = await response.json();
         setData(responseData);
-        console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.error('Erreur lors de la récupération des données', error);
@@ -67,10 +66,16 @@ function TestPython() {
       {isLoading ? (
         <p className="p-2"> Loading... </p>
       ) : (
-        data.resultats.map((resultat, i) => (
-          <p className="p-2" key={i}>{resultat} <br /></p>
-        ))
+        <>
+        {data.resultats.map((resultat, i) => (
+          <p className="p-2" key={i}>
+            {resultat} <br />
+          </p>
+        ))}
+        {console.log(data)}
+      </>
       )}
+      
 
     </div>
   );
