@@ -1,5 +1,10 @@
+"""
+Projet -  
 
-from flask import Flask
+authors :
+    Marwane Bahraoui - bahraoui.marwane@gmail.com
+"""
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from time import sleep
 import sys
@@ -17,18 +22,31 @@ def statut():
 @app.route("/resultats")
 def resultats():
     sleep(2)
-    if mod.prediction_modele("aaa"):
-        return {"resultats": ["res1","res2","res3"]}
-    else:
-        return {"resultats": ["res4","res5","res6"]}
+    return {"resultats": ["res1","res2","res3"]}
 
-@app.route("/recherche/<titre>")
+@app.route("/recherche_titre/<titre>")
 def rechercheAvecTitre(titre):
     #sleep(3)
-    if mod.prediction_modele(titre):
-        return "Vrai"
-    else:
-        return "Faux"
+    predictions = mod.prediction_modele(titre,"aaa","aaa")
+    return "Vrai"
+
+@app.route("/recherche", methods = ['POST'])
+def recherche():
+    if request.method == 'POST':
+        data = request.form
+        title, subject, text = data.get('title'), data.get('subject'), data.get('text')
+        if title=="" or subject=="" or text=="":
+            return "ERREUR - Un des arguments est vide"
+        predictions = mod.prediction_modele(title , text, subject)
+        return predictions
+    return "POST NE FONCTIONNENT PAS"
+
+@app.route("/testpost", methods = ['POST'])
+def testpost():
+    data = request.form
+    title, subject, text = data.get('title'), data.get('subject'), data.get('text')
+    predictions = mod.prediction_modele(title , text, subject)
+    return predictions
 
 
 if __name__ == '__main__':
