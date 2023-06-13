@@ -9,12 +9,11 @@ function Search({ title, setTitle, text, handleSearch }) {
 
   return (
     <div>
-      <div className="mt-36 flex justify-center">
+      <div className="mt-28 flex justify-center">
         <input
           className="p-2 w-6/12 border rounded text-black"
-          type="search"
-          placeholder="Lien d'un article"
-          value={title}
+          type="url"
+          placeholder="Lien d'un article..."
         />
       </div>
       <div className="mt-5 flex justify-center">
@@ -23,7 +22,7 @@ function Search({ title, setTitle, text, handleSearch }) {
       <div className="mt-5 flex justify-center">
         <div>
           <input
-            className="p-2 border rounded text-black"
+            className="p-2 w-80 border rounded text-black"
             type="search"
             placeholder="Titre d'article..."
             value={title}
@@ -47,7 +46,7 @@ function Search({ title, setTitle, text, handleSearch }) {
           </select>
 
           <textarea
-            className="p-2 border w-72 h-36 rounded ml-4 mb-[-117px] resize-none text-black"
+            className="p-2 border w-96 h-36 rounded ml-4 mb-[-117px] resize-none text-black"
             placeholder="Texte..."
             value={text}
           />
