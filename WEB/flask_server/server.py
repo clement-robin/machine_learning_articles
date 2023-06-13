@@ -38,7 +38,7 @@ def recherche():
         if title=="" or subject=="" or text=="":
             return "ERREUR - Un des arguments est vide"
         predictions = mod.prediction_modele(title , text, subject)
-        return predictions
+        return jsonify(predictions)
     return "POST NE FONCTIONNENT PAS"
 
 @app.route("/testpost", methods = ['POST'])
