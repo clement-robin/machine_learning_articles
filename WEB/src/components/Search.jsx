@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { search_white, search_blue } from '../assets';
 
 function Search({ title, setTitle, text, handleSearch }) {
   const [category, setCategory] = useState('');
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
+  };
+
+  const handleHover = () => {
+    setIsHovered(!isHovered);
   };
 
   return (
@@ -16,9 +22,7 @@ function Search({ title, setTitle, text, handleSearch }) {
           placeholder="Lien d'un article..."
         />
       </div>
-      <div className="mt-5 flex justify-center">
-        OU
-      </div>
+      <div className="mt-5 flex justify-center">OU</div>
       <div className="mt-5 flex justify-center">
         <div>
           <input
@@ -50,8 +54,18 @@ function Search({ title, setTitle, text, handleSearch }) {
             placeholder="Texte..."
             value={text}
           />
-          <button className="p-2 ml-4 bg-blue-500 text-white rounded" onClick={handleSearch}>
-            Search
+          <button
+            onClick={handleSearch}
+            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 rounded"
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+          >
+            <img
+              src={isHovered ? search_blue : search_white}
+              alt="Search Logo"
+              className="w-6 h-6"
+            />
+            <span>Search</span>
           </button>
         </div>
       </div>

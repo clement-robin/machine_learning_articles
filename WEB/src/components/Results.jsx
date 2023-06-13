@@ -21,7 +21,8 @@ function Results({ title }) {
   }, []);
 
   return (
-    <div className="ml-auto p10">
+    <div className="mt-28 mr-2 ml-2">
+      <hr></hr>
       {loading ? (
         <p className="">Chargement...</p>
       ) : (
