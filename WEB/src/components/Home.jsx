@@ -7,7 +7,7 @@ function Home() {
   const [showResults, setShowResults] = useState(false);
 
   const handleSearch = () => {
-    console.log("ouioui");
+    console.log("test");
     setShowResults(true);
   };
 
