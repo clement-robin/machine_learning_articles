@@ -1,5 +1,14 @@
 # machine_learning_articles
 
+## Pre-traitement donnees
+
+Notre dataset est ici représenté par le fichier **'...'** ...
+Il y a plusieurs facons de pre-traiter les données, la méthode par défaut est ici de ...
+
+## Modeles
+
+Pour pouvoir lancer l'entrainement sur nos modeles, il faut lancer la commande suivante : python ...
+
 ## IHM
 
 ### Back-end
