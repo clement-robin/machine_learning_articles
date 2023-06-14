@@ -24,7 +24,7 @@ function Search({ title, setTitle, text, handleSearch }) {
       </div>
       <div className="mt-5 flex justify-center">OU</div>
       <div className="mt-5 flex justify-center">
-        <div>
+        <div className='flex'>
           <input
             className="p-2 w-80 border rounded text-black"
             type="search"
@@ -56,16 +56,16 @@ function Search({ title, setTitle, text, handleSearch }) {
           />
           <button
             onClick={handleSearch}
-            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 rounded"
+            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 flex rounded"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
           >
             <img
               src={isHovered ? search_blue : search_white}
               alt="Search Logo"
-              className="w-6 h-6"
+              className="w-6 h-6 mr-3"
             />
-            <span>Search</span>
+            <span>Rechercher</span>
           </button>
         </div>
       </div>
