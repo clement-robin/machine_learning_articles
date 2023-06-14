@@ -9,8 +9,8 @@ function Results({ title }) {
     const fetchData = async () => {
       var data = {
         title: title,
-        subject: category,
-        text: text
+        subject: "le sujet",
+        text: "le texte"
       };
 
       try {
@@ -48,40 +48,46 @@ function Results({ title }) {
 
   return (
     <div className="mt-36 mr-2 ml-2">
-      <hr />
       {loading ? (
         <p className="">Chargement...</p>
       ) : (
         <div className="flex">
           {data.map((modele, i) => (
-            <div key={i} className={`flex-1 ${i !== 0 ? 'ml-2 border-l' : ''}`}>
-              <h1 className="text-xl">La prédiction du modèle {i} nous dit que {title} est |{modele.fakeOrNot}|</h1>
-              <ul>
-                <li className="flex items-center">
-                  <h2 className="text-right w-2/4">R2</h2>
-                  <h3 className="font-bold text-lg ml-4 w-2/5">
-                    <animated.span>{animatedMetrics.r2.interpolate(value => value.toFixed(4))}</animated.span>
+            <div key={i} className={`flex-1 ${i !== 0 ? 'border-l' : ''} text-center`}>
+              <h1 className="text-xl"> modèle {i}</h1>
+              <ul className="ml-8 mb-8">
+                <li className="flex items-center mt-4">
+                  <h2 className="text-right">R2</h2>
+                  <h3 className="font-bold text-lg ml-4">
+                    <animated.span>{animatedMetrics.r2.interpolate(value => value.toFixed(6))}</animated.span>
                   </h3>
                 </li>
-                <li>
+                <li className="inline">
                   <h2 className="font-bold inline">RMSE : </h2>
                   <h3 className="inline">
                     <animated.span>{animatedMetrics.rmse.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
                 </li>
-                <li>
+                <li className="inline ml-8">
                   <h2 className="font-bold inline">MAPE : </h2>
                   <h3 className="inline">
                     <animated.span>{animatedMetrics.mape.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
                 </li>
-                <li>
+                <li className="inline ml-8">
                   <h2 className="font-bold inline">MAE : </h2>
                   <h3 className="inline">
                     <animated.span>{animatedMetrics.mae.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
                 </li>
               </ul>
+              <div className="">
+              {modele.fakeOrNot ? (
+                <h1 className="text-7xl text-bold mt-4" style={{ color : '#FF0000'}}>FAKE</h1>
+                ) : (
+                <h1 className="text-7xl text-bold mt-4" style={{ color : '#00FF00'}}>TRUE</h1>) 
+              }
+              </div>
             </div>
           ))}
         </div>
