@@ -6,6 +6,12 @@ function Results({ title }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      var data = {
+        title: title,
+        subject: category,
+        text: text
+      };
+
       try {
         const requestOptions = {
           method: 'POST',
@@ -13,8 +19,8 @@ function Results({ title }) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ title: title, subject: 'le sujet', text: 'le texte' })
-      };
+          body: JSON.stringify(data)
+        };
         const response = await fetch("http://localhost:5000/recherche", requestOptions);
         const responseData = await response.json();
         setData(responseData);
@@ -38,15 +44,12 @@ function Results({ title }) {
         data
         .map((modele, i) => (
         <div key={i}>
-          <p className="">La prédiction du modele {i} nous dit que {title} est {modele.fakeOrNot}</p>
+          <p className="">La prédiction du modele {i} nous dit que {title} est {modele.fakeOrNot ? "faux" : "vrai"}.</p>
           <ul>
               <li >R2 : {modele.R2}</li>
               <li >RMSE : {modele.RMSE}</li>
               <li >MAPE : {modele.MAPE}</li>
               <li >MAE : {modele.MAE}</li>
-              <li >titre : {modele.titleTEST}</li>
-              <li >sujet : {modele.sujetTEST}</li>
-              <li >texte : {modele.texteTEST}</li>
           </ul>
         </div>
         ))

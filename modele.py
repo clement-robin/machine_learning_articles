@@ -11,9 +11,9 @@ def prediction_modele(titre, texte, sujet):
         'MAPE':654654,
         'MAE':777777,
         'R2':0.8555,
-        'titleTEST':"ttt",
-        'sujetTEST':"ttt",
-        'texteTEST':"ttt"
+        'titleTEST': titre,
+        'sujetTEST': sujet,
+        'texteTEST': texte
     }
     predicition_modele_2 = {
         'fakeOrNot':predictionModel2,
