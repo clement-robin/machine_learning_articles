@@ -7,6 +7,12 @@ function Results({ title }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      var data = {
+        title: title,
+        subject: category,
+        text: text
+      };
+
       try {
         const requestOptions = {
           method: 'POST',

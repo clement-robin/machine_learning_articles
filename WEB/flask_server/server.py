@@ -33,8 +33,8 @@ def rechercheAvecTitre(titre):
 @app.route("/recherche", methods = ['POST'])
 def recherche():
     if request.method == 'POST':
-        data = request.form
-        title, subject, text = data.get('title'), data.get('subject'), data.get('text')
+        data = request.get_json()
+        title, subject, text = data['title'], data['subject'], data['text']
         if title=="" or subject=="" or text=="":
             return "ERREUR - Un des arguments est vide"
         predictions = mod.prediction_modele(title , text, subject)
