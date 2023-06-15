@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 
-function Results({ title }) {
+function Results({ title , text}) {
   const [data, setData] = useState([{}]);
   const [loading, setLoading] = useState(true);
 
@@ -9,8 +9,7 @@ function Results({ title }) {
     const fetchData = async () => {
       var data = {
         title: title,
-        subject: "le sujet",
-        text: "le texte"
+        text: text,
       };
 
       try {

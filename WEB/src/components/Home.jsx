@@ -4,6 +4,7 @@ import Results from './Results';
 
 function Home() {
   const [title, setTitle] = useState('');
+  const [text, setText] = useState('');
   const [showResults, setShowResults] = useState(false);
 
   const handleSearch = () => {
@@ -13,8 +14,8 @@ function Home() {
 
   return (
     <div>
-      <Search title={title} setTitle={setTitle} handleSearch={handleSearch} />
-      {showResults && <Results title={title} />}
+      <Search title={title} text={text} setTitle={setTitle} setText={setText} handleSearch={handleSearch} />
+      {showResults && <Results title={title} text={text}/>}
     </div>
   );
 }
