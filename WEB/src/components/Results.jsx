@@ -5,6 +5,14 @@ function Results({ title , text}) {
   const [data, setData] = useState([{}]);
   const [loading, setLoading] = useState(true);
 
+  if (title === "" || title === ""){
+    return (
+      <div className="mt-36 mr-2 ml-2">
+          <p className=""> Erreur ! Un argument est vide.</p>
+      </div>
+    );
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       var data = {
