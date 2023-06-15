@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AboutWrapper from './components/About';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import TestPythonWrapper2 from './components/TestEzPython';
+import CheckServerStatus from './components/CheckServerStatus';
 
 function App() {
   return (
