@@ -4,6 +4,7 @@ import github_white from "./github_white.svg";
 import github_black from "./github_black.svg"
 import search_white from "./search_white.svg";
 import search_blue from "./search_blue.svg";
+import info from "./info.svg";
 
 export {
     logo,
@@ -11,4 +12,5 @@ export {
     github_black,
     search_white,
     search_blue,
+    info,
 }

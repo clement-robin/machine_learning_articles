@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
+import { info } from '../assets';
 
 function Results({ title , text}) {
   const [data, setData] = useState([{}]);
   const [loading, setLoading] = useState(true);
+  const [hoveredModel, setHoveredModel] = useState(-1);
 
   if (title === "" || title === ""){
     return (
       <div className="mt-36 mr-2 ml-2">
-          <p className=""> Erreur ! Un argument est vide.</p>
+          <p className="">Erreur ! Un argument est vide.</p>
       </div>
     );
   }
@@ -60,40 +62,48 @@ function Results({ title , text}) {
       ) : (
         <div className="flex">
           {data.map((modele, i) => (
-            <div key={i} className={`flex-1 ${i !== 0 ? 'border-l' : ''} text-center`}>
-              <h1 className="text-xl"> modèle {i}</h1>
-              <ul className="ml-8 mb-8">
-                <li className="flex items-center mt-4">
-                  <h2 className="text-right">R2</h2>
-                  <h3 className="font-bold text-lg ml-4">
+            <div
+              key={i}
+              className={`flex-1 ${i !== 0 ? 'border-l' : ''} text-center`}
+              onMouseEnter={() => setHoveredModel(i)}
+              onMouseLeave={() => setHoveredModel(-1)}
+            >
+              <div className="flex justify-center items-center">
+                <h1 className="text-xl">modèle {i}</h1>
+                <img
+                  src={info}
+                  alt="Info Logo"
+                  className="w-6 h-6 ml-5"
+                />
+              </div>
+              <div className="ml-8 mb-8 mt-6" style={{ visibility: hoveredModel === i ? 'visible' : 'hidden' }}>
+                <div className="flex justify-center items-center">
+                  <h2>R2</h2>
+                  <h3 className="font-bold text-lg ml-3">
                     <animated.span>{animatedMetrics.r2.interpolate(value => value.toFixed(6))}</animated.span>
                   </h3>
-                </li>
-                <li className="inline">
-                  <h2 className="font-bold inline">RMSE : </h2>
-                  <h3 className="inline">
+                  <h2 className="ml-4 mr-1">RMSE</h2>
+                  <h3 className="font-bold text-lg">
                     <animated.span>{animatedMetrics.rmse.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
-                </li>
-                <li className="inline ml-8">
-                  <h2 className="font-bold inline">MAPE : </h2>
-                  <h3 className="inline">
+                </div>
+                <div className="flex justify-center items-center">
+                  <h2 className="mr-1">MAPE</h2>
+                  <h3 className="font-bold text-lg mr-4">
                     <animated.span>{animatedMetrics.mape.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
-                </li>
-                <li className="inline ml-8">
-                  <h2 className="font-bold inline">MAE : </h2>
-                  <h3 className="inline">
+                  <h2 className="mr-1">MAE</h2>
+                  <h3 className="font-bold text-lg">
                     <animated.span>{animatedMetrics.mae.interpolate(value => value.toFixed(0))}</animated.span>
                   </h3>
-                </li>
-              </ul>
-              <div className="">
-              {modele.fakeOrNot ? (
-                <h1 className="text-7xl text-bold mt-4" style={{ color : '#FF0000'}}>FAKE</h1>
+                </div>
+              </div>
+              <div>
+                {modele.fakeOrNot ? (
+                  <h1 className="text-7xl text-bold mt-4" style={{ color: '#FF0000' }}>FAKE</h1>
                 ) : (
-                <h1 className="text-7xl text-bold mt-4" style={{ color : '#00FF00'}}>TRUE</h1>) 
-              }
+                  <h1 className="text-7xl text-bold mt-4" style={{ color: '#00FF00' }}>TRUE</h1>)
+                }
               </div>
             </div>
           ))}

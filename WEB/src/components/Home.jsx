@@ -15,7 +15,7 @@ function Home() {
   return (
     <div>
       <Search title={title} text={text} setTitle={setTitle} setText={setText} handleSearch={handleSearch} />
-      {showResults && <Results title={title} text={text}/>}
+      {showResults && <Results title={title} text={text} />}
     </div>
   );
 }

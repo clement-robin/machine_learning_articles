@@ -33,7 +33,6 @@ function Search({ title, text, setTitle, setText, handleSearch }) {
             placeholder="Texte..."
             value={text}
             onChange={(e) => setText(e.target.value)}
-
           />
           <button
             onClick={handleSearch}
