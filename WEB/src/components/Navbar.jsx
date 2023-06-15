@@ -27,7 +27,7 @@ const Navbar = () => {
                 <Link to="/about">About</Link>
             </li>
             <li>
-                <Link to="/testpython">BackServer</Link>
+                <Link to="/checkstatus">Server Status</Link>
             </li>
         </ul>
       </div>

@@ -17,7 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutWrapper />} />
-          <Route path="/testpython" element={<TestPythonWrapper2 />} />
+          <Route path="/checkstatus" element={<CheckServerStatus />} />
           {/* Autres routes */}
         </Routes>
       </div>
