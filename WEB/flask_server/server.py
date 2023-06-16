@@ -27,25 +27,25 @@ def resultats():
 @app.route("/recherche_titre/<titre>")
 def rechercheAvecTitre(titre):
     #sleep(3)
-    predictions = mod.prediction_modele(titre,"aaa","aaa")
-    return "Vrai"
+    predictions = mod.prediction_modele(titre,"aaa")
+    return "Vrai"+str(predictions)
 
 @app.route("/recherche", methods = ['POST'])
 def recherche():
     if request.method == 'POST':
         data = request.get_json()
-        title, subject, text = data['title'], data['subject'], data['text']
-        if title=="" or subject=="" or text=="":
+        title, text = data['title'], data['text']
+        if title=="" or text=="":
             return "ERREUR - Un des arguments est vide"
-        predictions = mod.prediction_modele(title , text, subject)
+        predictions = mod.prediction_modele(title , text)
         return jsonify(predictions)
     return "POST NE FONCTIONNENT PAS"
 
 @app.route("/testpost", methods = ['POST'])
 def testpost():
     data = request.form
-    title, subject, text = data.get('title'), data.get('subject'), data.get('text')
-    predictions = mod.prediction_modele(title , text, subject)
+    title, text = data.get('title'), data.get('text')
+    predictions = mod.prediction_modele(title , text)
     return predictions
 
 

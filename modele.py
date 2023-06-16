@@ -1,5 +1,5 @@
 
-def prediction_modele(titre, texte, sujet):
+def prediction_modele(titre, texte):
 
     # model = prediction(titre + texte + sujet)
     predictionModel1 = True
@@ -16,8 +16,8 @@ def prediction_modele(titre, texte, sujet):
         'MAE':777777,
         'R2':0.8555,
         'titleTEST':titre,
-        'sujetTEST':sujet,
-        'texteTEST':sujet
+        'sujetTEST':"sujet",
+        'texteTEST':texte
     }
     predicition_modele_2 = {
         'fakeOrNot':predictionModel2,
@@ -26,8 +26,8 @@ def prediction_modele(titre, texte, sujet):
         'MAE':777777,
         'R2':0.87888,
         'titleTEST':titre,
-        'sujetTEST':sujet,
-        'texteTEST':sujet
+        'sujetTEST':"sujet",
+        'texteTEST':texte
     }
     predicition_modele_3 = {
         'fakeOrNot':predictionModel3,
@@ -36,8 +36,8 @@ def prediction_modele(titre, texte, sujet):
         'MAE':7894,
         'R2':0.9845,
         'titleTEST':titre,
-        'sujetTEST':sujet,
-        'texteTEST':sujet
+        'sujetTEST':"sujet",
+        'texteTEST':texte
     }
     predicition_modele_4 = {
         'fakeOrNot':predictionModel4,
@@ -46,8 +46,8 @@ def prediction_modele(titre, texte, sujet):
         'MAE':7894,
         'R2':0.9845,
         'titleTEST':titre,
-        'sujetTEST':sujet,
-        'texteTEST':sujet
+        'sujetTEST':"sujet",
+        'texteTEST':texte
     }
     predicition_modele_5 = {
         'fakeOrNot':predictionModel5,
@@ -56,8 +56,8 @@ def prediction_modele(titre, texte, sujet):
         'MAE':7894,
         'R2':0.9845,
         'titleTEST':titre,
-        'sujetTEST':sujet,
-        'texteTEST':sujet
+        'sujetTEST':"sujet",
+        'texteTEST':texte
     }
     all_predictions = [predicition_modele_1, predicition_modele_2, predicition_modele_3, predicition_modele_4, predicition_modele_5 ]
     return all_predictions
