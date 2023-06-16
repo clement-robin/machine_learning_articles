@@ -7,14 +7,6 @@ function Results({ title , text}) {
   const [loading, setLoading] = useState(true);
   const [hoveredModel, setHoveredModel] = useState(-1);
 
-  if (title === "" || title === ""){
-    return (
-      <div className="mt-36 mr-2 ml-2">
-          <p className="">Erreur ! Un argument est vide.</p>
-      </div>
-    );
-  }
-
   useEffect(() => {
     const fetchData = async () => {
       var data = {
@@ -58,7 +50,9 @@ function Results({ title , text}) {
   return (
     <div className="mt-36 mr-2 ml-2">
       {loading ? (
-        <p className="">Chargement...</p>
+        <div className="flex justify-center">
+          <div className="border-t-4 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
+        </div>
       ) : (
         <div className="flex">
           {data.map((modele, i) => (
@@ -100,9 +94,9 @@ function Results({ title , text}) {
               </div>
               <div>
                 {modele.fakeOrNot ? (
-                  <h1 className="text-7xl text-bold mt-4" style={{ color: '#FF0000' }}>FAKE</h1>
+                  <h1 className="text-7xl text-bold mt-2 mb-16" style={{ color: '#FF0000' }}>FAKE</h1>
                 ) : (
-                  <h1 className="text-7xl text-bold mt-4" style={{ color: '#00FF00' }}>TRUE</h1>)
+                  <h1 className="text-7xl text-bold mt-2" style={{ color: '#00FF00' }}>TRUE</h1>)
                 }
               </div>
             </div>

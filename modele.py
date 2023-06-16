@@ -5,6 +5,8 @@ def prediction_modele(titre, texte, sujet):
     predictionModel1 = True
     predictionModel2 = False
     predictionModel3 = True
+    predictionModel4 = False
+    predictionModel5 = True
 
 
     predicition_modele_1 = {
@@ -37,7 +39,27 @@ def prediction_modele(titre, texte, sujet):
         'sujetTEST':sujet,
         'texteTEST':sujet
     }
-    all_predictions = [predicition_modele_1, predicition_modele_2, predicition_modele_3]
+    predicition_modele_4 = {
+        'fakeOrNot':predictionModel4,
+        'RMSE':9466261651615,
+        'MAPE':5445,
+        'MAE':7894,
+        'R2':0.9845,
+        'titleTEST':titre,
+        'sujetTEST':sujet,
+        'texteTEST':sujet
+    }
+    predicition_modele_5 = {
+        'fakeOrNot':predictionModel5,
+        'RMSE':9466261651615,
+        'MAPE':5445,
+        'MAE':7894,
+        'R2':0.9845,
+        'titleTEST':titre,
+        'sujetTEST':sujet,
+        'texteTEST':sujet
+    }
+    all_predictions = [predicition_modele_1, predicition_modele_2, predicition_modele_3, predicition_modele_4, predicition_modele_5 ]
     return all_predictions
 
 if __name__ == '__main__':
