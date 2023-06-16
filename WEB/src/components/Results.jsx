@@ -17,11 +17,6 @@ function Results({ title , text}) {
 
   useEffect(() => {
     const fetchData = async () => {
-      var data = {
-        title: title,
-        text: text,
-      };
-
       try {
         const requestOptions = {
           method: 'POST',

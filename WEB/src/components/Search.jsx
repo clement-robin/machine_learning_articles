@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { search_white, search_blue } from '../assets';
+
+
 
 function Search({ title, text, setTitle, setText, handleSearch }) {
   const [isHovered, setIsHovered] = useState(false);
+  const titleRef = useRef();
+  const textRef = useRef();
+
+  function handleSearchInside(){
+    setText(textRef.current.value);
+    setTitle(titleRef.current.value);
+    handleSearch();
+  }
 
   const handleHover = () => {
     setIsHovered(!isHovered);
@@ -24,18 +34,16 @@ function Search({ title, text, setTitle, setText, handleSearch }) {
             className="p-2 w-80 border rounded text-black"
             type="search"
             placeholder="Titre d'article..."
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            ref={titleRef}
           />
 
           <textarea
             className="p-2 border w-96 h-36 rounded ml-4 mb-[-117px] resize-none text-black"
             placeholder="Texte..."
-            value={text}
-            onChange={(e) => setText(e.target.value)}
+            ref={textRef}
           />
           <button
-            onClick={handleSearch}
+            onClick={handleSearchInside}
             className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 flex rounded"
             onMouseEnter={handleHover}
             onMouseLeave={handleHover}
