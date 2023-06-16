@@ -3,14 +3,28 @@ import { search_white, search_blue } from '../assets';
 
 
 
-function Search({ title, text, setTitle, setText, handleSearch }) {
+function Search({ title, text, link, setLink, setTitle, setText, handleSearch }) {
   const [isHovered, setIsHovered] = useState(false);
   const titleRef = useRef();
   const textRef = useRef();
+  const linkRef = useRef();
 
   function handleSearchInside(){
+    // faudrait un truc pour recuperer le lien si on a misslclick sur le mauvais bouton
+    linkRef.current.value = '';
     setText(textRef.current.value);
     setTitle(titleRef.current.value);
+    setLink(linkRef.current.value);
+    handleSearch();
+  }
+
+  function handleSearchInsideLink(){
+    // faudrait faire pareil
+    textRef.current.value = '';
+    titleRef.current.value = '';
+    setText(textRef.current.value);
+    setTitle(titleRef.current.value);
+    setLink(linkRef.current.value);
     handleSearch();
   }
 
@@ -25,7 +39,20 @@ function Search({ title, text, setTitle, setText, handleSearch }) {
           className="p-2 w-6/12 border rounded text-black"
           type="url"
           placeholder="Lien d'un article..."
+          ref={linkRef}
         />
+        <button
+            onClick={handleSearchInsideLink}
+            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 flex rounded"
+            onMouseEnter={handleHover}
+            onMouseLeave={handleHover}
+          >
+            <img
+              src={isHovered ? search_blue : search_white}
+              alt="Search Logo"
+              className="w-6 h-6 mr-3"
+            />
+        </button>
       </div>
       <div className="mt-5 flex justify-center">OU</div>
       <div className="mt-5 flex justify-center">

@@ -10,10 +10,10 @@ function CheckStatus() {
       try {
         const response = await fetch('http://localhost:5000/statut'); // dev environnement
         const responseData = await response.text();
-        setIsUp(responseData.includes("UP"))
-        if (isUp) {
+        if (responseData.includes("UP")) {
           // Le serveur est up
           console.log("Serveur up");
+          setIsUp(true);
         } else {
           // Le serveur n'est pas up
           console.log("Serveur indisponible");
@@ -38,7 +38,7 @@ function CheckStatus() {
           isUp ? (
             <p className="p-2"> Le serveur est up ! </p>
           ) : (
-            <p className="p-2"> Le serveur ne semble pas être présent. Veuillez vérifier que vous avez bien mis le bon url et lancé le serveur avec python, puis rafraichissez cette page. </p>
+            <p className="p-2"> Le serveur ne semble pas être présent. Veuillez vérifier que vous avez bien mis le bon url et lancé le serveur avec python3, puis rafraichissez cette page. </p>
           )
       )}
       

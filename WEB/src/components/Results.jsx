@@ -1,14 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import { info } from '../assets';
+import { extract } from '@extractus/article-extractor';
 
-function Results({ title , text}) {
+function Results({ title, text, link }) {
   const [data, setData] = useState([{}]);
   const [loading, setLoading] = useState(true);
   const [hoveredModel, setHoveredModel] = useState(-1);
 
-  useEffect(() => {
+  
+  if ( (title === '' || text === '') && link === '') {
+    return (
+      <div className="mt-36 mr-2 ml-2">
+        <p>Erreur ! Les deux arguments ne peuvent pas être vides.</p>
+      </div>
+    );
+  }
+
+  useEffect(()=> {
+    setLoading(true);
     const fetchData = async () => {
+      console.log(link);
+      if (link !== '') {
+        try {
+          const article = await extract(link)
+          console.log(article)
+        } catch (err) {
+          console.error(err)
+        }
+      }
       try {
         const requestOptions = {
           method: 'POST',
@@ -16,7 +36,7 @@ function Results({ title , text}) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ title: title, subject: 'le sujet', text: 'le texte' })
+          body: JSON.stringify({ title: title, text: text })
         };
         const response = await fetch("http://localhost:5000/recherche", requestOptions);
         const responseData = await response.json();
@@ -69,21 +89,21 @@ function Results({ title , text}) {
                 <div className="flex justify-center items-center">
                   <h2>R2</h2>
                   <h3 className="font-bold text-lg ml-3">
-                    <animated.span>{animatedMetrics.r2.interpolate(value => value.toFixed(6))}</animated.span>
+                    <animated.span>{animatedMetrics.r2.to(value => value.toFixed(6))}</animated.span>
                   </h3>
                   <h2 className="ml-4 mr-1">RMSE</h2>
                   <h3 className="font-bold text-lg">
-                    <animated.span>{animatedMetrics.rmse.interpolate(value => value.toFixed(0))}</animated.span>
+                    <animated.span>{animatedMetrics.rmse.to(value => value.toFixed(0))}</animated.span>
                   </h3>
                 </div>
                 <div className="flex justify-center items-center">
                   <h2 className="mr-1">MAPE</h2>
                   <h3 className="font-bold text-lg mr-4">
-                    <animated.span>{animatedMetrics.mape.interpolate(value => value.toFixed(0))}</animated.span>
+                    <animated.span>{animatedMetrics.mape.to(value => value.toFixed(0))}</animated.span>
                   </h3>
                   <h2 className="mr-1">MAE</h2>
                   <h3 className="font-bold text-lg">
-                    <animated.span>{animatedMetrics.mae.interpolate(value => value.toFixed(0))}</animated.span>
+                    <animated.span>{animatedMetrics.mae.to(value => value.toFixed(0))}</animated.span>
                   </h3>
                 </div>
               </div>

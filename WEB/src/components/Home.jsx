@@ -3,21 +3,22 @@ import Search from './Search';
 import Results from './Results';
 
 function Home() {
+  const [link, setLink] = useState('');
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const [showResults, setShowResults] = useState(false);
-  const [resultsKey, setResultsKey] = useState(0); // Ajoutez une clé unique pour le composant "Results"
+  const [resultsKey, setResultsKey] = useState(0);
 
   const handleSearch = () => {
     console.log("test");
     setShowResults(true);
-    setResultsKey(resultsKey + 1); // Mettez à jour la clé unique pour le composant "Results"
+    setResultsKey(resultsKey + 1);
   };
 
   return (
     <div>
-      <Search title={title} text={text} setTitle={setTitle} setText={setText} handleSearch={handleSearch} />
-      {showResults && <Results key={resultsKey} title={title} text={text} />}
+      <Search title={title} text={text} link={link} setTitle={setTitle} setLink={setLink} setText={setText} handleSearch={handleSearch} />
+      {showResults && <Results key={resultsKey} title={title} text={text} link={link} />}
     </div>
   );
 }
