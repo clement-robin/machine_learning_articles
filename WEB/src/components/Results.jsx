@@ -96,7 +96,7 @@ function Results({ title , text}) {
                 {modele.fakeOrNot ? (
                   <h1 className="text-7xl text-bold mt-2 mb-16" style={{ color: '#FF0000' }}>FAKE</h1>
                 ) : (
-                  <h1 className="text-7xl text-bold mt-2" style={{ color: '#00FF00' }}>TRUE</h1>)
+                  <h1 className="text-7xl text-bold mt-2" style={{ color: '#00FF00' }}>REAL</h1>)
                 }
               </div>
             </div>
