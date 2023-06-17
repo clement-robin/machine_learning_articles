@@ -52,6 +52,7 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
               alt="Search Logo"
               className="w-6 h-6 mr-3"
             />
+            <span>Rechercher avec un lien</span>
         </button>
       </div>
       <div className="mt-5 flex justify-center">OU</div>
@@ -80,7 +81,7 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
               alt="Search Logo"
               className="w-6 h-6 mr-3"
             />
-            <span>Rechercher</span>
+            <span>Rechercher avec le contenu</span>
           </button>
         </div>
       </div>

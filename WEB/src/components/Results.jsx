@@ -22,8 +22,9 @@ function Results({ title, text, link }) {
     setLoading(true);
     const fetchData = async () => {
       //console.log('le lien : ',link);
-      var thetitle = "";
-      var thetext = "";
+      var thetitle = title;
+      var thetext = text;
+      var theimg;
       if (link !== '') {
         try {
           const res = await fetch(link);
@@ -33,11 +34,14 @@ function Results({ title, text, link }) {
           //console.log("titre de l'article", article.title);
           thetitle = article.title;
           thetext = article.content;
+          theimg = article.image;
           if (article === null){
             setError(1);
           }
         } catch (err) {
           console.error(err);
+          setError(1);
+          setLoading(false);
           return;
         }
       }
@@ -128,7 +132,7 @@ function Results({ title, text, link }) {
                           {modele.fakeOrNot ? (
                             <h1 className="text-7xl text-bold mt-2 mb-16" style={{ color: '#FF0000' }}>FAKE</h1>
                           ) : (
-                            <h1 className="text-7xl text-bold mt-2" style={{ color: '#00FF00' }}>TRUE</h1>
+                            <h1 className="text-7xl text-bold mt-2" style={{ color: '#00FF00' }}>REAL</h1>
                           )}
                         </div>
                       </div>
