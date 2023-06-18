@@ -1,4 +1,4 @@
-import { github_black, github_white } from '../assets';
+import { github_black, github_white, colab } from '../assets';
 import React, { useState } from 'react';
 
 function About() {
@@ -42,19 +42,34 @@ export default function AboutWrapper() {
         <div className="border border-gray-300 p-4 rounded mx-4 flex flex-col items-center">
           <h2 className="text-xl font-bold" style={{ color: '#6B8915' }}>Notre sujet</h2>
           <p className="text-justify">Aujourd'hui nous avons accès a une mutitudes d'articles sur internet et parmis eux beaucoup sont trompeurs. lls peuvent semer la confusion, influencer les opinions publiques, polariser les débats et compromettre la confiance dans les médias et les institutions. Pour lutter contre ce problème, notre projet a été développé pour détecter les fake news en ligne dans les articles de presse. L'objectif est de fournir aux utilisateurs une évaluation fiable de la crédibilité des articles, les aidant ainsi à prendre des décisions éclairées et à contrer la propagation des fausses informations, renforçant ainsi la confiance dans les informations en ligne et promouvant un journalisme responsable.</p>
-          <button
-            onClick={() => window.open("https://github.com/clement-robin/machine_learning_articles", "_blank")}
-            className="p-2 bg-black text-white hover:bg-white hover:text-black rounded flex items-center justify-center gap-2"
-            onMouseEnter={handleHover}
-            onMouseLeave={handleHover}
-          >
-            <img 
-              src={isHovered ? github_black : github_white}
-              alt="GitHub Logo"
-              className="w-6 h-6"
-            />
-            <span>Github</span>
-          </button>
+          <div className="flex gap-4">
+            <button
+              onClick={() => window.open("https://github.com/clement-robin/machine_learning_articles", "_blank")}
+              className="p-2 bg-black text-white hover:bg-white hover:text-black rounded flex items-center justify-center gap-2"
+              onMouseEnter={handleHover}
+              onMouseLeave={handleHover}
+            >
+              <img 
+                src={isHovered ? github_black : github_white}
+                alt="GitHub Logo"
+                className="w-6 h-6"
+              />
+              <span>Github</span>
+            </button>
+            <button
+              onClick={() => window.open("https://colab.research.google.com/drive/1lB5zrUkmgbidEkPXCwCeSVrCE9PfgOYg?usp=sharing", "_blank")}
+              className="p-2 bg-black text-white hover:bg-white hover:text-black rounded flex items-center justify-center gap-2"
+            
+            >
+              <img 
+                src={colab}
+                alt="Colab Logo"
+                className="w-6 h-6"
+              />
+              <span>Google Colab</span>
+            </button>
+          </div>
+          
         </div>
       </div>
     </div>
