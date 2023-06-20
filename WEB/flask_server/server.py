@@ -2,8 +2,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import sys
 # setting path
-from predict import predict_all
-
 app = Flask(__name__)
 CORS(app)
 
@@ -13,6 +11,7 @@ def statut():
 
 @app.route("/recherche", methods = ['POST'])
 def recherche():
+    from predict import predict_all
     if request.method == 'POST':
         data = request.get_json()
         title, text = data['title'], data['text']

@@ -61,7 +61,7 @@ def predict_lstm(title, text):
     # Prédiction pour chaque modèle
     lstm_prediction = np.squeeze(lstm_model.predict(padded_sequences)[0])
 
-    return lstm_prediction > 0.6
+    return lstm_prediction <= 0.6
 
 def predict_rf(title, text):
     # Prétraitement du titre et du texte
@@ -73,7 +73,7 @@ def predict_rf(title, text):
     # Prédiction pour chaque modèle
     rf_prediction =  rf_model.predict(input)
 
-    return np.squeeze(rf_prediction==1)
+    return np.squeeze(rf_prediction==0)
 
 def predict_dt(title, text):
     # Prétraitement du titre et du texte
@@ -84,7 +84,7 @@ def predict_dt(title, text):
     # Prédiction pour chaque modèle
     dt_prediction = dt_model.predict(input)
 
-    return np.squeeze(dt_prediction==1)
+    return np.squeeze(dt_prediction==0)
 
 def predict_svm(title, text):
     # Prétraitement du titre et du texte
@@ -96,15 +96,15 @@ def predict_svm(title, text):
     # Prédiction pour chaque modèle
     svm_prediction = svm_model.predict(input)
 
-    return np.squeeze(svm_prediction==1)
+    return np.squeeze(svm_prediction==0)
 
 def predict_all(titre, texte):
 
     # model = prediction(titre + texte + sujet)
-    predictionModelLSTM = predict_lstm(titre, texte)
-    predictionModelRF = predict_rf(titre, texte)
-    predictionModelDT = predict_dt(titre, texte)
-    predictionModelSVM = predict_svm(titre, texte)
+    predictionModelLSTM = bool(predict_lstm(titre, texte))
+    predictionModelRF = bool(predict_rf(titre, texte))
+    predictionModelDT = bool(predict_dt(titre, texte))
+    predictionModelSVM = bool(predict_svm(titre, texte))
 
     predicition_modele_LSTM = {
         'fakeOrNot':predictionModelLSTM,

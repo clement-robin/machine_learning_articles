@@ -84,7 +84,7 @@ function Results({ title, text, link }) {
                         className={`flex-1 ${i !== 0 ? 'border-l' : ''} text-center`}
                       >
                         <div className="flex justify-center items-center mb-12">
-                          <h1 className="text-xl">modèle {modele.name}</h1>
+                          <h1 className="text-xl">{modele.name}</h1>
                         </div>
                         <div>
                           {modele.fakeOrNot ? (
