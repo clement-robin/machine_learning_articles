@@ -1,0 +1,7 @@
+joblib
+nltk
+flask
+flask_cors
+numpy
+pandas
+tensorflow
