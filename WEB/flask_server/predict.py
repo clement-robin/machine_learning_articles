@@ -9,6 +9,8 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import load_model
 from bs4 import BeautifulSoup
 
+nltk.download('stopwords')
+
 def supprimer_balises_html(text):
     soup = BeautifulSoup(text, 'html.parser')
     texte_sans_balises = soup.get_text()
@@ -23,7 +25,6 @@ def preprocess_text(text):
     return text
 
 def remove_stop_words(text):
-    nltk.download('stopwords')
     stop_words = set(stopwords.words('english'))
     words = text.split()
     filtered_words = [word for word in words if word.lower() not in stop_words]
