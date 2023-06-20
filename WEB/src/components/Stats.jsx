@@ -6,28 +6,28 @@ export default function Stats() {
       modele: "Random Forest",
       mae: 0.002539109443936371,
       rmse: 0.05016010308500689,
-      accurency: 0.9974608905560636,
+      accuracy: 0.9974608905560636,
       r2: 0.9898223897628078,
     },
     {
       modele: "Arbre de Décision",
       mae: 0.004966815665654901,
       rmse: 0.07023331142065957,
-      accurency: 0.9950331843343451,
+      accuracy: 0.9950331843343451,
       r2: 0.9800901831559834,
     },
     {
       modele: "SVM",
       mae: 0.007839992872733752,
       rmse: 0.08845202617073675,
-      accurency: 0.9921600071272663,
+      accuracy: 0.9921600071272663,
       r2: 0.9685670427302947,
     },
     {
       modele: "LSTM",
       mae: 0.0024333090893865444,
       rmse: 0.04729786262293804,
-      accurency: 0.9975501113585746,
+      accuracy: 0.9975501113585746,
       r2: 0.9910402713884846,
     }
   ];
@@ -36,7 +36,7 @@ export default function Stats() {
   const secondRow = values.slice(2);
 
 
-  const [animatedValues, setAnimatedValues] = useState(values.map(value => ({...value, mae: 0, rmse: 0, accurency: 0, r2: 0 })));
+  const [animatedValues, setAnimatedValues] = useState(values.map(value => ({...value, mae: 0, rmse: 0, accuracy: 0, r2: 0 })));
 
   useEffect(() => {
     const step = 20; // en millisecondes
@@ -50,7 +50,7 @@ export default function Stats() {
           ...animatedValue,
           mae: animatedValue.mae + (targetValue.mae / totalSteps),
           rmse: animatedValue.rmse + (targetValue.rmse / totalSteps),
-          accurency: animatedValue.accurency + (targetValue.accurency / totalSteps),
+          accuracy: animatedValue.accuracy + (targetValue.accuracy / totalSteps),
           r2: animatedValue.r2 + (targetValue.r2 / totalSteps),
         };
       }));
@@ -81,8 +81,8 @@ export default function Stats() {
                   <h3 className="font-bold text-lg">{animatedValues[index]?.rmse?.toFixed(5)}</h3>
                 </div>
                 <div className="flex justify-center items-center">
-                  <h2>Accurency</h2>
-                  <h3 className="font-bold text-lg ml-3">{animatedValues[index]?.accurency?.toFixed(5)}</h3>
+                  <h2>Accuracy</h2>
+                  <h3 className="font-bold text-lg ml-3">{animatedValues[index]?.accuracy?.toFixed(5)}</h3>
                   <h2 className="ml-4 mr-1">MAE</h2>
                   <h3 className="font-bold text-lg">{animatedValues[index]?.mae?.toFixed(5)}</h3>
                 </div>
@@ -103,8 +103,8 @@ export default function Stats() {
                   <h3 className="font-bold text-lg">{animatedValues[index + 2]?.rmse?.toFixed(5)}</h3>
                 </div>
                 <div className="flex justify-center items-center">
-                  <h2>Accurency</h2>
-                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 2]?.accurency?.toFixed(5)}</h3>
+                  <h2>Accuracy</h2>
+                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 2]?.accuracy?.toFixed(5)}</h3>
                   <h2 className="ml-4 mr-1">MAE</h2>
                   <h3 className="font-bold text-lg">{animatedValues[index + 2]?.mae?.toFixed(5)}</h3>
                 </div>
