@@ -4,46 +4,39 @@ export default function Stats() {
   const values = [
     {
       modele: "Random Forest",
-      mae: 0.0023386392054114886,
-      rmse: 0.048212085143867114,
-      mape: 571758851444336.8,
-      r2: 0.9906251178897355,
+      mae: 0.002539109443936371,
+      rmse: 0.05016010308500689,
+      accurency: 0.9974608905560636,
+      r2: 0.9898223897628078,
     },
     {
       modele: "Arbre de Décision",
-      mae: 0.006035903603723997,
-      rmse: 0.07766871441156412,
-      mape: 1253841938218433.2,
-      r2: 0.9758052689926363,
+      mae: 0.004966815665654901,
+      rmse: 0.07023331142065957,
+      accurency: 0.9950331843343451,
+      r2: 0.9800901831559834,
     },
     {
       modele: "SVM",
-      mae: 0.007884538286783377,
-      rmse: 0.08879350544799902,
-      mape: 2086392985195472.5,
-      r2: 0.968392359455363,
+      mae: 0.007839992872733752,
+      rmse: 0.08845202617073675,
+      accurency: 0.9921600071272663,
+      r2: 0.9685670427302947,
     },
     {
       modele: "LSTM",
-      mae: 0.00249247208278832,
-      rmse: 0.04813807817803971,
-      mape: 420540768274963.56,
-      r2: 0.9907191165269033,
-    },
-    {
-      modele: "CNN",
-      mae: 0.99999999999999999,
-      rmse: 0.99999999999999999,
-      mape: 99999999999999999.99,
-      r2: 0.99999999999999999,
-    },
+      mae: 0.0024333090893865444,
+      rmse: 0.04729786262293804,
+      accurency: 0.9975501113585746,
+      r2: 0.9910402713884846,
+    }
   ];
 
-  const firstRow = values.slice(0, 3);
-  const secondRow = values.slice(3);
+  const firstRow = values.slice(0, 2);
+  const secondRow = values.slice(2);
 
 
-  const [animatedValues, setAnimatedValues] = useState(values.map(value => ({...value, mae: 0, rmse: 0, mape: 0, r2: 0 })));
+  const [animatedValues, setAnimatedValues] = useState(values.map(value => ({...value, mae: 0, rmse: 0, accurency: 0, r2: 0 })));
 
   useEffect(() => {
     const step = 20; // en millisecondes
@@ -57,7 +50,7 @@ export default function Stats() {
           ...animatedValue,
           mae: animatedValue.mae + (targetValue.mae / totalSteps),
           rmse: animatedValue.rmse + (targetValue.rmse / totalSteps),
-          mape: animatedValue.mape + (targetValue.mape / totalSteps),
+          accurency: animatedValue.accurency + (targetValue.accurency / totalSteps),
           r2: animatedValue.r2 + (targetValue.r2 / totalSteps),
         };
       }));
@@ -88,8 +81,8 @@ export default function Stats() {
                   <h3 className="font-bold text-lg">{animatedValues[index]?.rmse?.toFixed(5)}</h3>
                 </div>
                 <div className="flex justify-center items-center">
-                  <h2>MAPE</h2>
-                  <h3 className="font-bold text-lg ml-3">{animatedValues[index]?.mape?.toExponential(5)}</h3>
+                  <h2>Accurency</h2>
+                  <h3 className="font-bold text-lg ml-3">{animatedValues[index]?.accurency?.toFixed(5)}</h3>
                   <h2 className="ml-4 mr-1">MAE</h2>
                   <h3 className="font-bold text-lg">{animatedValues[index]?.mae?.toFixed(5)}</h3>
                 </div>
@@ -105,15 +98,15 @@ export default function Stats() {
                 <h2 className="mb-6 text-xl font-bold text-[#6B8915]">{value.modele}</h2>
                 <div className="flex justify-center items-center">
                   <h2>R2</h2>
-                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 3]?.r2?.toFixed(5)}</h3>
+                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 2]?.r2?.toFixed(5)}</h3>
                   <h2 className="ml-4 mr-1">RMSE</h2>
-                  <h3 className="font-bold text-lg">{animatedValues[index + 3]?.rmse?.toFixed(5)}</h3>
+                  <h3 className="font-bold text-lg">{animatedValues[index + 2]?.rmse?.toFixed(5)}</h3>
                 </div>
                 <div className="flex justify-center items-center">
-                  <h2>MAPE</h2>
-                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 3]?.mape?.toExponential(5)}</h3>
+                  <h2>Accurency</h2>
+                  <h3 className="font-bold text-lg ml-3">{animatedValues[index + 2]?.accurency?.toFixed(5)}</h3>
                   <h2 className="ml-4 mr-1">MAE</h2>
-                  <h3 className="font-bold text-lg">{animatedValues[index + 3]?.mae?.toFixed(5)}</h3>
+                  <h3 className="font-bold text-lg">{animatedValues[index + 2]?.mae?.toFixed(5)}</h3>
                 </div>
               </div>
             </React.Fragment>
