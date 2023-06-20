@@ -10,7 +10,6 @@ function Home() {
   const [resultsKey, setResultsKey] = useState(0);
 
   const handleSearch = () => {
-    console.log("test");
     setShowResults(true);
     setResultsKey(resultsKey + 1);
   };

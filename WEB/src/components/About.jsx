@@ -1,15 +1,9 @@
 import { github_black, github_white, colab } from '../assets';
 import React, { useState } from 'react';
 
-function About() {
-  return (
-    <div>
-      <h1 style={{ color: '#6B8915' }}>About Page</h1>
-    </div>
-  );
-}
 
-export default function AboutWrapper() {
+
+export default function About() {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleHover = () => {
@@ -57,7 +51,7 @@ export default function AboutWrapper() {
               <span>Github</span>
             </button>
             <button
-              onClick={() => window.open("https://colab.research.google.com/drive/1lB5zrUkmgbidEkPXCwCeSVrCE9PfgOYg?usp=sharing", "_blank")}
+              onClick={() => window.open("https://colab.research.google.com/drive/1gESoCFbiAWtMq6ONwhhaqsCMBR_nvWqD?usp=sharing", "_blank")}
               className="p-2 bg-black text-white hover:bg-white hover:text-black rounded flex items-center justify-center gap-2"
             
             >

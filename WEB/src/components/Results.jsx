@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
-import { info } from '../assets';
-import { extract, extractFromHtml } from '@extractus/article-extractor';
+import { extractFromHtml } from '@extractus/article-extractor';
 
 function Results({ title, text, link }) {
   const [data, setData] = useState([{}]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(0); // 0 = pas d'erreur / 1 = erreur de fetch d'article extractor
-  const [hoveredModel, setHoveredModel] = useState(-1);
 
   
   if ( (title === '' || text === '') && link === '') {
     return (
       <div className="mt-36 mr-2 ml-2">
-        <p>Erreur ! Les deux arguments ne peuvent pas être vides.</p>
+        <p className="flex justify-center items-center text-red-500">Erreur ! Les deux arguments ne peuvent pas être vides.</p>
       </div>
     );
   }
@@ -67,16 +64,6 @@ function Results({ title, text, link }) {
     fetchData();
   }, []);
 
-  const animatedMetrics = useSpring({
-    from: { r2: 0, rmse: 0, mape: 0, mae: 0 },
-    to: {
-      r2: data[0]?.R2 || 0,
-      rmse: data[0]?.RMSE || 0,
-      mape: data[0]?.MAPE || 0,
-      mae: data[0]?.MAE || 0
-    },
-    config: { duration: 2000 }
-  });
 
   return (
     <div className="mt-36 mr-2 ml-2">
@@ -95,38 +82,9 @@ function Results({ title, text, link }) {
                       <div
                         key={i}
                         className={`flex-1 ${i !== 0 ? 'border-l' : ''} text-center`}
-                        onMouseEnter={() => setHoveredModel(i)}
-                        onMouseLeave={() => setHoveredModel(-1)}
                       >
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-center items-center mb-12">
                           <h1 className="text-xl">modèle {i}</h1>
-                          <img
-                            src={info}
-                            alt="Info Logo"
-                            className="w-6 h-6 ml-5"
-                          />
-                        </div>
-                        <div className="ml-8 mb-8 mt-6" style={{ visibility: hoveredModel === i ? 'visible' : 'hidden' }}>
-                          <div className="flex justify-center items-center">
-                            <h2>R2</h2>
-                            <h3 className="font-bold text-lg ml-3">
-                              <animated.span>{animatedMetrics.r2.to(value => value.toFixed(6))}</animated.span>
-                            </h3>
-                            <h2 className="ml-4 mr-1">RMSE</h2>
-                            <h3 className="font-bold text-lg">
-                              <animated.span>{animatedMetrics.rmse.to(value => value.toFixed(0))}</animated.span>
-                            </h3>
-                          </div>
-                          <div className="flex justify-center items-center">
-                            <h2 className="mr-1">MAPE</h2>
-                            <h3 className="font-bold text-lg mr-4">
-                              <animated.span>{animatedMetrics.mape.to(value => value.toFixed(0))}</animated.span>
-                            </h3>
-                            <h2 className="mr-1">MAE</h2>
-                            <h3 className="font-bold text-lg">
-                              <animated.span>{animatedMetrics.mae.to(value => value.toFixed(0))}</animated.span>
-                            </h3>
-                          </div>
                         </div>
                         <div>
                           {modele.fakeOrNot ? (
@@ -140,9 +98,9 @@ function Results({ title, text, link }) {
                   </div>
                 );
               case 1:
-                return <p>Impossible d'atteindre la cible suivante : <a href={link}>{link}</a></p>;
+                return <p className="flex justify-center items-center text-red-500">Impossible d'atteindre la cible suivante [<a href={link}>{link}</a>]</p>;
               default:
-                return <p>Erreur.</p>;
+                return <p className="flex justify-center items-center text-red-500">Erreur.</p>;
             }
           })()}
           </>

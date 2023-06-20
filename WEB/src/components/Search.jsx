@@ -38,7 +38,12 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
 
   return (
     <div>
-      <div className="mt-28 flex justify-center">
+      <div className="flex justify-center mt-20">
+        <h1 className="text-4xl font-bold" style={{ color: '#6B8915' }}>
+          Analyse et détection de Fake News
+        </h1>
+      </div>
+      <div className="mt-20 flex justify-center">
         <input
           className="p-2 w-6/12 border rounded text-black"
           type="url"

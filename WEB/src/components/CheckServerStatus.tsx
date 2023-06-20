@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { server_green, server_red } from '../assets';
 
 function CheckStatus() {
   const [isUp, setIsUp] = useState(false)
@@ -28,21 +29,40 @@ function CheckStatus() {
   }, []);
   
   return (
-    <div className="ml-auto p10">
-      <br /> <br /> <br /> <br />
-      <p className="p-2">Statut du serveur</p>
-      <br /> <br />
+    <div className="mt-20">
+      <div className="flex justify-center">
+        <h1 className="text-4xl font-bold" style={{ color: '#6B8915' }}>
+          Statut du Serveur
+        </h1>
+      </div>
       {isLoading ? (
-        <p className="p-2"> Connexion en cours... </p>
+        <div className="flex justify-center mt-32">
+            <div className="border-t-4 border-blue-500 rounded-full w-16 h-16 animate-spin"></div>
+        </div>
+        
       ) : (
-          isUp ? (
+        isUp ? (
+          <div className="flex justify-center items-center mt-32">
+            <img 
+              src={server_green}
+              alt="Server is up" 
+              className="mr-2 w-8 h-8"
+            />
             <p className="p-2"> Le serveur est up ! </p>
-          ) : (
+          </div>
+        ) : (
+          <div className="flex justify-center items-center mt-32">
+            <img
+              src={server_red}
+              alt="Server is down"
+              className="mr-2 w-8 h-8"
+            />
             <p className="p-2"> Le serveur ne semble pas être présent. Veuillez vérifier que vous avez bien mis le bon url et lancé le serveur avec python3, puis rafraichissez cette page. </p>
-          )
-      )}
+          </div>
+        )
+      )
+      }
       
-
     </div>
   );
 }

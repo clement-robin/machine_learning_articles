@@ -1,9 +1,10 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AboutWrapper from './components/About';
+import About from './components/About';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
+import Stats from './components/Stats';
 import CheckServerStatus from './components/CheckServerStatus';
 
 function App() {
@@ -16,8 +17,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<AboutWrapper />} />
+          <Route path="/about" element={<About />} />
           <Route path="/checkstatus" element={<CheckServerStatus />} />
+          <Route path="/stats" element={<Stats />} />
           {/* Autres routes */}
         </Routes>
       </div>

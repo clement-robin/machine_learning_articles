@@ -24,10 +24,13 @@ const Navbar = () => {
         </Link>
         <ul className="list-none hidden sm:flex flex-row gap-10">
             <li>
-                <Link to="/about">About</Link>
+                <Link to="/stats">Métriques</Link>
             </li>
             <li>
-                <Link to="/checkstatus">Server Status</Link>
+                <Link to="/checkstatus">Status Serveur</Link>
+            </li>
+            <li>
+                <Link to="/about">À propos</Link>
             </li>
         </ul>
       </div>
