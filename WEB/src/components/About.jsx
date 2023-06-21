@@ -1,4 +1,4 @@
-import { github_black, github_white, colab } from '../assets';
+import { github, colab } from '../assets';
 import React, { useState } from 'react';
 
 
@@ -44,26 +44,36 @@ export default function About() {
               onMouseLeave={handleHover}
             >
               <img 
-                src={isHovered ? github_black : github_white}
+                src={github}
                 alt="GitHub Logo"
                 className="w-6 h-6"
               />
               <span>Github</span>
             </button>
             <button
-              onClick={() => window.open("https://colab.research.google.com/drive/1gESoCFbiAWtMq6ONwhhaqsCMBR_nvWqD?usp=sharing", "_blank")}
+              onClick={() => window.open("https://github.com/clement-robin/machine_learning_articles/blob/main/Data%20Processing.ipynb", "_blank")}
               className="p-2 bg-black text-white hover:bg-white hover:text-black rounded flex items-center justify-center gap-2"
-            
+              
+            >
+              <img 
+                src={github}
+                alt="GitHub Logo"
+                className="w-6 h-6"
+              />
+              <span>Notebook - Prétraitements</span>
+            </button>
+            <button
+              onClick={() => window.open("https://moadbens.github.io/", "_blank")}
+              className="p-2 bg-white text-black hover:bg-black hover:text-white rounded flex items-center justify-center gap-2"
             >
               <img 
                 src={colab}
                 alt="Colab Logo"
                 className="w-6 h-6"
               />
-              <span>Google Colab</span>
+              <span>Google Colab - Entraînement</span>
             </button>
           </div>
-          
         </div>
       </div>
     </div>

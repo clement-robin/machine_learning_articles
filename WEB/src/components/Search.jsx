@@ -1,11 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { search_white, search_blue } from '../assets';
+import { search } from '../assets';
 
 
 
 function Search({ title, text, link, setLink, setTitle, setText, handleSearch }) {
-  const [isHoveredLink, setIsHoveredLink] = useState(false);
-  const [isHoveredText, setIsHoveredText] = useState(false);
+
   const titleRef = useRef();
   const textRef = useRef();
   const linkRef = useRef();
@@ -29,12 +28,6 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
     handleSearch();
   }
 
-  const handleHoverLink = () => {
-    setIsHoveredLink(!isHoveredLink);
-  };
-  const handleHoverText = () => {
-    setIsHoveredText(!isHoveredText);
-  };
 
   return (
     <div>
@@ -52,12 +45,10 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
         />
         <button
             onClick={handleSearchInsideLink}
-            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 flex rounded"
-            onMouseEnter={handleHoverLink}
-            onMouseLeave={handleHoverLink}
+            className="p-2 ml-4 bg-blue-400 text-white hover:bg-blue-200 flex rounded"
           >
             <img
-              src={isHoveredLink ? search_blue : search_white}
+              src={search}
               alt="Search Logo"
               className="w-6 h-6 mr-3"
             />
@@ -81,12 +72,11 @@ function Search({ title, text, link, setLink, setTitle, setText, handleSearch })
           />
           <button
             onClick={handleSearchInside}
-            className="p-2 ml-4 bg-blue-500 text-white hover:bg-white hover:text-blue-500 flex rounded"
-            onMouseEnter={handleHoverText}
-            onMouseLeave={handleHoverText}
+            className="p-2 ml-4 bg-blue-400 text-white hover:bg-blue-200 flex rounded"
+            
           >
             <img
-              src={isHoveredText ? search_blue : search_white}
+              src={search}
               alt="Search Logo"
               className="w-6 h-6 mr-3"
             />
