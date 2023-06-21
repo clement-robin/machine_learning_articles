@@ -1,19 +1,26 @@
 # machine_learning_articles
 
-## Pre-traitement donnees
+## Pré-traitement donnees
 
-Notre dataset est ici représenté par le fichier **'...'** ...
-Il y a plusieurs facons de pre-traiter les données, la méthode par défaut est ici de ...
+Notre dataset a été pré-traité afin de pouvoir garantir la qualité des données d'entrée, améliorer les performances des modèles et faciliter l'apprentissage automatique.
+Ce pré-traitement est bien indiqué dans le [fichier "Data Processing.py"](https://github.com/clement-robin/machine_learning_articles/blob/main/Data%20Processing.ipynb).
 
 ## Modeles
 
-Pour pouvoir lancer l'entrainement sur nos modeles, il faut lancer la commande suivante : python ...
+Nos modèles sont déjà entrainés comme indiquées dans le [fichier modele_final.ipynb](https://github.com/clement-robin/machine_learning_articles/blob/main/Mod%C3%A8le_final.ipynb).
+Ils ont été enregistrées dans un fichier grâce à la libraire joblib dans le [dossier "modeles"](https://github.com/clement-robin/machine_learning_articles/tree/main/WEB/flask_server/modeles) dans "WEB/flask_server/".
+
+*Note : "tfidif.joblib" n'est pas un modèle entrainé.*
 
 ## IHM
 
+Veuillez trouver ci-dessous les commandes nécessaires pour le bon fonctionnement de notre IHM basé principalement sur Flask et ReactJS.
+
+*Note: Ces commandes sont des commandes shell sur un environnement ubuntu mais il est tout de même possible de lancer les serveurs sur windows ou autre OS en adaptant ces commandes.*
+
 ### Back-end
 
-Installation du serveur back-end :
+Installer le serveur back-end :
 
 ```
 cd WEB/flask-server/
@@ -24,7 +31,7 @@ pip3 install -r requirements.txt
 python3 server.py
 ```
 
-Lancement du serveur back-end :
+Lancer le serveur back-end :
 
 ```
 cd WEB/flask-server/
